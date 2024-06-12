@@ -1,8 +1,7 @@
 ## Features
 
 - **Text Summarization:** Condense articles to their key points.
-- **Added:**
-- **Paragraph Count Specification:** Users can specify the number of paragraphs they want the summary to be. 
+- **(Added) Paragraph Count Specification:** Users can specify the number of paragraphs they want the summary to be. 
 
 ## Usage
 
