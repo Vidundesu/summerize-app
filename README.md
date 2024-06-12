@@ -7,22 +7,48 @@
 
 ### Summarize an Article
 
-To summarize an article, simply provide the text and the desired number of paragraphs for the summary.
+To summarize an article, provide the URL of the article and the desired number of paragraphs for the summary.
 
 #### Example:
 
-```python
-from summarizer import summarize
+```javascript
+import React, { useState } from 'react';
+import { useLazyGetSummaryQuery } from './path-to-your-api-slice';
 
-# Your article text
-article_text = """
-Your long article text goes here...
-"""
+const ArticleSummarizer = () => {
+  const [articleUrl, setArticleUrl] = useState('');
+  const [articleLength, setArticleLength] = useState(3); // Default to 3 paragraphs
+  const [trigger, { data: summary, isFetching, error }] = useLazyGetSummaryQuery();
 
-# Specify the number of paragraphs for the summary
-paragraph_count = 3
+  const handleFetchSummary = () => {
+    trigger({ articleUrl, articleLength });
+  };
 
-# Get the summary
-summary = summarize(article_text, paragraph_count=paragraph_count)
+  return (
+    <div>
+      <input
+        type="text"
+        value={articleUrl}
+        onChange={(e) => setArticleUrl(e.target.value)}
+        placeholder="Enter article URL"
+      />
+      <input
+        type="number"
+        value={articleLength}
+        onChange={(e) => setArticleLength(Number(e.target.value))}
+        placeholder="Number of paragraphs"
+      />
+      <button onClick={handleFetchSummary}>Get Summary</button>
+      {isFetching && <p>Loading...</p>}
+      {error && <p>Error fetching summary: {error.message}</p>}
+      {summary && (
+        <div>
+          <h2>Article Summary</h2>
+          <p>{summary}</p>
+        </div>
+      )}
+    </div>
+  );
+};
 
-print(summary)
+export default ArticleSummarizer;
