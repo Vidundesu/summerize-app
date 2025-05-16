@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <header className='w-full flex justify-center items-center flex-col'>
       <nav className='flex justify-between items-center w-full mb-10 pt-3'>
-        <img src={logo} alt='sumz_logo' className='w-28 object-contain' />
+        <h1 className="font-poppins text-4xl font-bold orange_gradient">GPT + Sum</h1>
 
         <button
           type='button'
@@ -23,9 +23,6 @@ const Hero = () => {
         Summarize Articles with <br className='max-md:hidden' />
         <span className='orange_gradient '>OpenAI GPT-4</span>
       </h1>
-      <h2 className='desc'>
-        this is testing
-      </h2>
     </header>
   );
 };

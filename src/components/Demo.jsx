@@ -30,7 +30,7 @@ const Demo = () => {
     e.preventDefault();
 
     const existingArticle = allArticles.find(
-      (item) => item.url === article.url
+      (item) => item.url === article.url && item.length === article.length
     );
 
     if (existingArticle) return setArticle(existingArticle);
@@ -117,6 +117,9 @@ const Demo = () => {
               </div>
               <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
                 {item.url}
+              </p>
+             <p className="flex-2 font-satoshi text-blue-700 font-medium text-sm truncate">
+                {item.length}
               </p>
             </div>
           ))}
